@@ -15,7 +15,7 @@ import {
   Phone,
   ArrowRight,
 } from "lucide-react";
-import heroRunway from "@/assets/hero-runway.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
