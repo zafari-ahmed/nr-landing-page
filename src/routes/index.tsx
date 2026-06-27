@@ -190,36 +190,30 @@ function Nav() {
 }
 
 function Hero() {
-  const [videoFailed, setVideoFailed] = useState(false);
   return (
-    <section id="top" className="relative bg-black text-white overflow-hidden pt-16">
-      {/* Background video (with image fallback) */}
-      {!videoFailed && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          onError={() => setVideoFailed(true)}
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
-          aria-hidden
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-      )}
-      {videoFailed && (
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: `url(${heroRunway})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-      )}
-      {/* Dark gradient overlay */}
+    <section
+      id="top"
+      className="relative bg-black text-white overflow-hidden pt-16"
+      style={{
+        backgroundImage: `url(${heroRunway})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        aria-hidden
+      >
+        <source src={HERO_VIDEO_PRIMARY} type="video/mp4" />
+        <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />
+      </video>
+      {/* Dark gradient overlay (sits above the video) */}
       <div
         className="absolute inset-0"
         style={{
@@ -228,6 +222,7 @@ function Hero() {
         }}
         aria-hidden
       />
+
       {/* subtle grid lines */}
       <div
         className="absolute inset-0 opacity-[0.06]"
