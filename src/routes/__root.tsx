@@ -77,14 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Aerotech Global Services — Aviation Infrastructure" },
+      { name: "description", content: "AGS delivers end-to-end airport infrastructure solutions — navaid equipment supply, installation, and flight operations support for governments and private investors worldwide." },
+      { name: "author", content: "Aerotech Global Services" },
+      { property: "og:title", content: "Aerotech Global Services — Aviation Infrastructure" },
+      { property: "og:description", content: "End-to-end airport infrastructure: navaid systems, ILS, NDB, PAPI, and flight operations support." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
