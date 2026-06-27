@@ -52,10 +52,6 @@ const BG_SERVICES =
   "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=2000&q=80";
 const BG_WHY =
   "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=80";
-const HERO_VIDEO_PRIMARY =
-  "https://assets.mixkit.co/videos/preview/mixkit-airplane-taking-off-at-night-1498-large.mp4";
-const HERO_VIDEO_FALLBACK =
-  "https://assets.mixkit.co/videos/preview/mixkit-view-of-a-plane-landing-on-a-runway-at-night-40523-large.mp4";
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
