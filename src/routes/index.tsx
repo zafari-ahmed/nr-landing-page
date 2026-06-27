@@ -15,7 +15,7 @@ import {
   Phone,
   ArrowRight,
 } from "lucide-react";
-import heroRunway from "@/assets/hero-runway.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -52,10 +52,6 @@ const BG_SERVICES =
   "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=2000&q=80";
 const BG_WHY =
   "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=80";
-const HERO_VIDEO_PRIMARY =
-  "https://assets.mixkit.co/videos/preview/mixkit-airplane-taking-off-at-night-1498-large.mp4";
-const HERO_VIDEO_FALLBACK =
-  "https://assets.mixkit.co/videos/preview/mixkit-view-of-a-plane-landing-on-a-runway-at-night-40523-large.mp4";
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
@@ -191,37 +187,36 @@ function Nav() {
 
 function Hero() {
   return (
-    <section
-      id="top"
-      className="relative bg-black text-white overflow-hidden pt-16"
-      style={{
-        backgroundImage: `url(${heroRunway})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Background video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-        aria-hidden
-      >
-        <source src={HERO_VIDEO_PRIMARY} type="video/mp4" />
-        <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />
-      </video>
+    <section id="top" className="relative bg-black text-white overflow-hidden pt-16">
+      {/* YouTube background video */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+        <iframe
+          src="https://www.youtube.com/embed/UEN3pBAbDT0?autoplay=1&mute=1&loop=1&playlist=UEN3pBAbDT0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=0"
+          allow="autoplay; encrypted-media"
+          className="absolute"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "177.78vh",
+            minWidth: "100%",
+            height: "56.25vw",
+            minHeight: "100%",
+            border: "none",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
       {/* Dark gradient overlay (sits above the video) */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.85) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.60) 100%)",
         }}
         aria-hidden
       />
+
 
       {/* subtle grid lines */}
       <div
