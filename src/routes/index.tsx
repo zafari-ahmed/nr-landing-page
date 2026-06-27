@@ -52,8 +52,10 @@ const BG_SERVICES =
   "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=2000&q=80";
 const BG_WHY =
   "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=80";
-const HERO_VIDEO =
-  "https://cdn.pixabay.com/video/2020/03/30/34607-403328302_large.mp4";
+const HERO_VIDEO_PRIMARY =
+  "https://assets.mixkit.co/videos/preview/mixkit-airplane-taking-off-at-night-1498-large.mp4";
+const HERO_VIDEO_FALLBACK =
+  "https://assets.mixkit.co/videos/preview/mixkit-view-of-a-plane-landing-on-a-runway-at-night-40523-large.mp4";
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
@@ -188,36 +190,30 @@ function Nav() {
 }
 
 function Hero() {
-  const [videoFailed, setVideoFailed] = useState(false);
   return (
-    <section id="top" className="relative bg-black text-white overflow-hidden pt-16">
-      {/* Background video (with image fallback) */}
-      {!videoFailed && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          onError={() => setVideoFailed(true)}
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
-          aria-hidden
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-      )}
-      {videoFailed && (
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: `url(${heroRunway})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-      )}
-      {/* Dark gradient overlay */}
+    <section
+      id="top"
+      className="relative bg-black text-white overflow-hidden pt-16"
+      style={{
+        backgroundImage: `url(${heroRunway})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        aria-hidden
+      >
+        <source src={HERO_VIDEO_PRIMARY} type="video/mp4" />
+        <source src={HERO_VIDEO_FALLBACK} type="video/mp4" />
+      </video>
+      {/* Dark gradient overlay (sits above the video) */}
       <div
         className="absolute inset-0"
         style={{
@@ -226,6 +222,7 @@ function Hero() {
         }}
         aria-hidden
       />
+
       {/* subtle grid lines */}
       <div
         className="absolute inset-0 opacity-[0.06]"
