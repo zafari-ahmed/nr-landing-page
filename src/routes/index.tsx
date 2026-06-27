@@ -16,7 +16,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -24,7 +23,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AGS delivers end-to-end airport infrastructure: navaid equipment supply, installation, and flight operations support for multinationals, enterprises, and governments worldwide.",
+          "AGS delivers end-to-end airport infrastructure: navaid equipment supply, installation, certification, and flight operations support for multinationals and governments worldwide.",
       },
       { property: "og:title", content: "Aerotech Global Services — Aviation Infrastructure" },
       {
@@ -45,13 +44,17 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Background image URLs (Unsplash — free aviation imagery)
-const BG_ABOUT =
-  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80";
-const BG_SERVICES =
-  "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=2000&q=80";
-const BG_WHY =
-  "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=80";
+// Editorial photography (Unsplash placeholders)
+const IMG_HERO =
+  "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=2400&q=90";
+const IMG_PROJECT_RUNWAY =
+  "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=85";
+const IMG_NAVAID =
+  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=85";
+const IMG_FLIGHT_OPS =
+  "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1600&q=85";
+const IMG_TOWER =
+  "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?auto=format&fit=crop&w=1600&q=85";
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
@@ -125,6 +128,7 @@ function Nav() {
 
   const links = [
     { href: "#about", label: "About" },
+    { href: "#projects", label: "Projects" },
     { href: "#services", label: "Services" },
     { href: "#why", label: "Why Us" },
     { href: "#contact", label: "Contact" },
@@ -187,77 +191,61 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative bg-black text-white overflow-hidden pt-16">
-      {/* YouTube background video */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
-        <iframe
-          src="https://www.youtube.com/embed/UEN3pBAbDT0?autoplay=1&mute=1&loop=1&playlist=UEN3pBAbDT0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=0"
-          allow="autoplay; encrypted-media"
-          className="absolute"
+    <section
+      id="top"
+      className="relative bg-black text-white overflow-hidden"
+      style={{ minHeight: "100vh", paddingTop: "64px" }}
+    >
+      <div className="absolute inset-0">
+        <img
+          src={IMG_HERO}
+          alt=""
+          className="w-full h-full object-cover"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0"
           style={{
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "177.78vh",
-            minWidth: "100%",
-            height: "56.25vw",
-            minHeight: "100%",
-            border: "none",
-            pointerEvents: "none",
+            background:
+              "linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.30) 60%, rgba(0,0,0,0.10) 100%)",
           }}
         />
       </div>
-      {/* Dark gradient overlay (sits above the video) */}
+
       <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.60) 100%)",
-        }}
-        aria-hidden
-      />
-
-
-      {/* subtle grid lines */}
-      <div
-        className="absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-        aria-hidden
-      />
-
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-28 md:py-40">
+        className="relative mx-auto max-w-7xl px-6 lg:px-10 flex flex-col justify-center"
+        style={{ minHeight: "calc(100vh - 64px)" }}
+      >
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-6">
+          <p className="text-xs uppercase tracking-[0.35em] text-white/70 mb-6">
             Aerotech Global Services
           </p>
         </Reveal>
         <Reveal delay={120}>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] max-w-5xl">
-            Built for Aviation. Trusted by Industry.
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.0] max-w-2xl">
+            Built for Aviation.
+            <br />
+            Trusted by Industry.
           </h1>
         </Reveal>
         <Reveal delay={240}>
-          <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+          <p className="mt-6 text-lg text-white/80 max-w-xl leading-relaxed">
             AGS delivers end-to-end airport infrastructure — from precision navigation systems to
-            operational support. Wherever airports need to be built, equipped, or certified, we're
-            the team that makes it happen.
+            operational support. Wherever airports need to be built, equipped, or certified, we make
+            it happen.
           </p>
         </Reveal>
         <Reveal delay={360}>
-          <div className="mt-12 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="#services"
+              href="#projects"
               className="inline-flex items-center gap-2 bg-white text-black font-semibold px-7 py-4 text-sm hover:bg-white/90 transition-colors"
             >
-              Explore Our Services <ArrowRight size={16} />
+              View Our Work <ArrowRight size={15} />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 border border-white/80 text-white font-semibold px-7 py-4 text-sm hover:bg-white hover:text-black transition-colors"
+              className="inline-flex items-center gap-2 border border-white/70 text-white font-semibold px-7 py-4 text-sm hover:bg-white hover:text-black transition-colors"
             >
               Contact Us
             </a>
@@ -265,7 +253,11 @@ function Hero() {
         </Reveal>
       </div>
 
-      <div className="relative h-px bg-white/20" aria-hidden />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.6))" }}
+        aria-hidden
+      />
     </section>
   );
 }
@@ -277,47 +269,45 @@ function About() {
     { value: "100%", label: "ICAO Standard Compliance" },
   ];
   return (
-    <section id="about" className="relative bg-white text-black overflow-hidden">
-      {/* Subtle background image */}
-      <div
-        className="absolute inset-0 opacity-[0.08]"
-        style={{
-          backgroundImage: `url(${BG_ABOUT})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        aria-hidden
-      />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+    <section id="about" className="relative bg-white text-black">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 — About</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Who We Are
             </h2>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="text-lg text-black/70 leading-relaxed">
+            <p className="mt-8 text-lg text-black/70 leading-relaxed">
               Aerotech Global Services is a specialized aviation infrastructure firm with over
               three decades of experience. We serve multinational corporations, local enterprises,
               and government bodies — providing turnkey solutions that span equipment supply,
               installation, commissioning, and full operational support, all built to international
               standards.
             </p>
-          </Reveal>
-        </div>
 
-        <div className="mt-20 grid sm:grid-cols-3 gap-px bg-black">
-          {stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 100}>
-              <div className="bg-black text-white p-10 md:p-12 h-full">
-                <div className="text-5xl md:text-6xl font-black tracking-tight">{s.value}</div>
-                <div className="mt-3 text-sm uppercase tracking-[0.2em] text-white/60">
-                  {s.label}
+            <div className="mt-12 grid grid-cols-3 gap-6">
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <div className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
+                    {s.value}
+                  </div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.18em] text-black/55 leading-snug">
+                    {s.label}
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <div className="relative w-full overflow-hidden aspect-[4/3]">
+              <img
+                src={IMG_FLIGHT_OPS}
+                alt="Aircraft on tarmac at dusk"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -371,98 +361,242 @@ function Clients() {
   );
 }
 
-function ServiceCard({
-  icon,
-  title,
-  description,
-  number,
-}: {
+function Projects() {
+  return (
+    <section id="projects" className="bg-white text-black border-t border-black/10">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">Featured Project</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
+            Our Work
+          </h2>
+          <p className="mt-4 text-lg text-black/60 max-w-2xl">
+            Real projects. Real outcomes. Built to international standards.
+          </p>
+        </Reveal>
+
+        <Reveal delay={150}>
+          <div className="mt-16 grid lg:grid-cols-2 gap-0 border border-black/10">
+            <div className="relative overflow-hidden" style={{ minHeight: "500px" }}>
+              <img
+                src={IMG_PROJECT_RUNWAY}
+                alt="AGS team conducting runway inspection in Balochistan"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute top-6 left-6">
+                <span className="bg-black text-white text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5">
+                  Turnkey Delivery
+                </span>
+              </div>
+            </div>
+
+            <div className="bg-white p-10 md:p-14 flex flex-col justify-between">
+              <div className="grid grid-cols-3 gap-4 mb-10 pb-10 border-b border-black/10">
+                <div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">3</div>
+                  <div className="mt-1 text-xs uppercase tracking-[0.18em] text-black/50">
+                    Navaids Installed
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">1</div>
+                  <div className="mt-1 text-xs uppercase tracking-[0.18em] text-black/50">
+                    Airstrip Delivered
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">100%</div>
+                  <div className="mt-1 text-xs uppercase tracking-[0.18em] text-black/50">
+                    Turnkey Scope
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-1 mb-6 text-sm">
+                <div className="flex gap-4">
+                  <span className="w-20 text-black/40 uppercase tracking-[0.15em] text-xs shrink-0 pt-0.5">
+                    Client
+                  </span>
+                  <span className="font-semibold">Multinational Mining Corporation</span>
+                </div>
+                <div className="flex gap-4">
+                  <span className="w-20 text-black/40 uppercase tracking-[0.15em] text-xs shrink-0 pt-0.5">
+                    Location
+                  </span>
+                  <span className="font-semibold">Balochistan, Pakistan</span>
+                </div>
+                <div className="flex gap-4">
+                  <span className="w-20 text-black/40 uppercase tracking-[0.15em] text-xs shrink-0 pt-0.5">
+                    Services
+                  </span>
+                  <span className="font-semibold">
+                    Consulting, Design, ILS · NDB · PAPI Installation
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tight leading-tight mb-4">
+                  Turnkey Airstrip for a Major Mining Operation
+                </h3>
+                <p className="text-base text-black/65 leading-relaxed">
+                  AGS delivered a complete greenfield airstrip solution for a leading multinational
+                  mining company operating in Balochistan. From initial site consulting and
+                  airstrip design through to the full installation and commissioning of ILS, NDB,
+                  and PAPI navigation systems — AGS managed the entire scope, bringing the airstrip
+                  from concept to fully certified and operational.
+                </p>
+              </div>
+
+              <a
+                href="#contact"
+                className="mt-10 inline-flex items-center gap-2 text-sm font-semibold group"
+              >
+                Discuss a Similar Project{" "}
+                <ArrowRight
+                  size={14}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+type Service = {
+  number: string;
   icon: ReactNode;
   title: string;
   description: string;
-  number: string;
-}) {
-  return (
-    <div className="group border border-white/20 bg-black/40 text-white p-10 md:p-12 transition-all duration-300 hover:bg-white hover:text-black hover:border-white cursor-default h-full flex flex-col">
-      <div className="flex items-center justify-between mb-10">
-        <div className="h-14 w-14 grid place-items-center border border-white/30 group-hover:border-black/30 transition-colors">
-          {icon}
-        </div>
-        <span className="text-xs font-mono tracking-widest text-white/40 group-hover:text-black/40">
-          {number}
+  image: string;
+  tags: string[];
+};
+
+function ServiceRow({ service, index }: { service: Service; index: number }) {
+  const imageFirst = index % 2 === 0;
+  const imageEl = (
+    <div className="relative overflow-hidden min-h-[360px] lg:min-h-[520px]">
+      <img
+        src={service.image}
+        alt={service.title}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+    </div>
+  );
+  const contentEl = (
+    <div className="bg-white p-10 md:p-14 lg:p-16 flex flex-col justify-center">
+      <div className="flex items-center gap-4 mb-8">
+        <span className="text-xs font-mono tracking-[0.25em] text-black/40">{service.number}</span>
+        <span className="h-px flex-1 bg-black/10" />
+        <span className="h-10 w-10 grid place-items-center border border-black/15 text-black">
+          {service.icon}
         </span>
       </div>
-      <h3 className="text-2xl md:text-3xl font-bold tracking-tight leading-tight">{title}</h3>
-      <p className="mt-6 text-base leading-relaxed text-white/70 group-hover:text-black/70 transition-colors flex-1">
-        {description}
+      <h3 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight leading-tight">
+        {service.title}
+      </h3>
+      <p className="mt-5 text-base md:text-lg text-black/65 leading-relaxed max-w-xl">
+        {service.description}
       </p>
-      <div className="mt-10 inline-flex items-center gap-2 text-sm font-semibold">
-        Learn more <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+      <div className="mt-7 flex flex-wrap gap-2">
+        {service.tags.map((t) => (
+          <span
+            key={t}
+            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-black/70 border border-black/15 px-2.5 py-1.5"
+          >
+            {t}
+          </span>
+        ))}
       </div>
+      <a
+        href="#contact"
+        className="mt-10 inline-flex items-center gap-2 text-sm font-semibold group w-fit"
+      >
+        Learn More{" "}
+        <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+      </a>
     </div>
+  );
+
+  return (
+    <Reveal>
+      <div className="grid lg:grid-cols-2 border-t border-black/10">
+        {imageFirst ? (
+          <>
+            {imageEl}
+            {contentEl}
+          </>
+        ) : (
+          <>
+            <div className="order-2 lg:order-1">{contentEl}</div>
+            <div className="order-1 lg:order-2">{imageEl}</div>
+          </>
+        )}
+      </div>
+    </Reveal>
   );
 }
 
 function Services() {
-  const services = [
+  const services: Service[] = [
     {
-      number: "/ 01",
-      icon: <RadioTower size={26} />,
+      number: "01",
+      icon: <RadioTower size={18} />,
       title: "Navaid Equipment Supply & Installation",
       description:
-        "We supply, install, and commission internationally certified navigation aids including Instrument Landing Systems (ILS), Non-Directional Beacons (NDB), Precision Approach Path Indicators (PAPI), and more — ensuring airports meet ICAO standards.",
+        "We supply, install, and commission internationally certified navigation aids — ILS, NDB, PAPI, and more — ensuring every airport meets ICAO standards from day one.",
+      image: IMG_NAVAID,
+      tags: ["ILS", "NDB", "PAPI", "ICAO Certified"],
     },
     {
-      number: "/ 02",
-      icon: <Building2 size={26} />,
+      number: "02",
+      icon: <Building2 size={18} />,
       title: "Airport Design & Operational Consulting",
       description:
-        "From initial feasibility and airfield design to full operational consulting, AGS guides airports through every phase of development — ensuring every element, from taxiways to terminal infrastructure, is compliant with ICAO standards from day one.",
+        "From initial feasibility and airfield design to full operational consulting, AGS guides airports through every phase of development — compliant with ICAO standards from the ground up.",
+      image: IMG_PROJECT_RUNWAY,
+      tags: ["Feasibility", "Airfield Design", "Operations"],
     },
     {
-      number: "/ 03",
-      icon: <FileCheck size={26} />,
+      number: "03",
+      icon: <FileCheck size={18} />,
       title: "Airstrip Certification & Licensing",
       description:
-        "We specialize in navigating the regulatory process to obtain airstrip licenses, operational permits, and certifications from relevant civil aviation authorities. Our team handles documentation, inspections, and compliance so you can focus on operations.",
+        "We specialize in obtaining airstrip licenses, operational permits, and certifications from civil aviation authorities — handling documentation, inspections, and regulatory compliance end to end.",
+      image: IMG_TOWER,
+      tags: ["CAA Approvals", "Permits", "Compliance"],
     },
     {
-      number: "/ 04",
-      icon: <Plane size={26} />,
+      number: "04",
+      icon: <Plane size={18} />,
       title: "Flight Operations & Airline Partnerships",
       description:
-        "AGS supports air transfer operations by facilitating partnerships between airport operators and airlines. We assist in establishing route structures, ground handling frameworks, and operational procedures that meet regulatory requirements and enable commercial aviation activity.",
+        "AGS facilitates partnerships between airport operators and airlines — from route structures and ground handling frameworks to operational procedures that enable commercial aviation activity.",
+      image: IMG_FLIGHT_OPS,
+      tags: ["Airline Partnerships", "Ground Ops", "Route Planning"],
     },
   ];
   return (
-    <section id="services" className="relative bg-[#111111] text-white overflow-hidden">
-      <div
-        className="absolute inset-0 opacity-[0.15]"
-        style={{
-          backgroundImage: `url(${BG_SERVICES})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        aria-hidden
-      />
-      <div className="absolute inset-0 bg-[#111111]/70" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
+    <section id="services" className="bg-white text-black">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-24 md:pt-32 pb-6">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">02 — Services</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">02 — Services</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] max-w-3xl">
-            Our Services
+            What We Do
           </h2>
-          <p className="mt-6 text-lg text-white/60 max-w-2xl">
+          <p className="mt-4 text-lg text-black/60 max-w-2xl">
             Four core practices, engineered to bring airports online and keep them running at
             international standards.
           </p>
         </Reveal>
-
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
+      </div>
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 mt-12 pb-24 md:pb-32">
+        <div className="border-b border-black/10">
           {services.map((s, i) => (
-            <Reveal key={s.title} delay={100 + i * 100}>
-              <ServiceCard {...s} />
-            </Reveal>
+            <ServiceRow key={s.title} service={s} index={i} />
           ))}
         </div>
       </div>
@@ -494,16 +628,7 @@ function WhyUs() {
     },
   ];
   return (
-    <section id="why" className="relative bg-white text-black overflow-hidden">
-      <div
-        className="absolute inset-0 opacity-[0.08]"
-        style={{
-          backgroundImage: `url(${BG_WHY})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        aria-hidden
-      />
+    <section id="why" className="relative bg-white text-black overflow-hidden border-t border-black/10">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 — Advantage</p>
@@ -668,6 +793,7 @@ function Index() {
         <Hero />
         <About />
         <Clients />
+        <Projects />
         <Services />
         <WhyUs />
         <Contact />
