@@ -104,3 +104,13 @@
     animation: ags-fade-up 0.8s ease-out forwards;
   }
 }
+
+@keyframes ags-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility ags-marquee-track {
+  animation: ags-marquee 40s linear infinite;
+  width: max-content;
+}
