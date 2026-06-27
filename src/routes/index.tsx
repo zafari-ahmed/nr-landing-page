@@ -5,8 +5,10 @@ import {
   Plane,
   ShieldCheck,
   Workflow,
-  Landmark,
-  Globe2,
+  Building,
+  Building2,
+  FileCheck,
+  Cog,
   Menu,
   X,
   Mail,
@@ -22,25 +24,18 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AGS delivers end-to-end airport infrastructure: navaid equipment supply, installation, and flight operations support for governments and private investors worldwide.",
+          "AGS delivers end-to-end airport infrastructure: navaid equipment supply, installation, and flight operations support for multinationals, enterprises, and governments worldwide.",
       },
       { property: "og:title", content: "Aerotech Global Services — Aviation Infrastructure" },
       {
         property: "og:description",
         content:
-          "Engineering the future of aviation infrastructure. ICAO-compliant navaid systems and flight operations support.",
+          "Built for aviation. Trusted by industry. ICAO-compliant navaid systems and end-to-end airport infrastructure.",
       },
     ],
     links: [
-      {
-        rel: "preconnect",
-        href: "https://fonts.googleapis.com",
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossOrigin: "anonymous",
-      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap",
@@ -49,6 +44,16 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
+// Background image URLs (Unsplash — free aviation imagery)
+const BG_ABOUT =
+  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80";
+const BG_SERVICES =
+  "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=2000&q=80";
+const BG_WHY =
+  "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=80";
+const HERO_VIDEO =
+  "https://cdn.pixabay.com/video/2020/03/30/34607-403328302_large.mp4";
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
@@ -72,7 +77,15 @@ function useReveal<T extends HTMLElement>() {
   return ref;
 }
 
-function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   const ref = useReveal<HTMLDivElement>();
   return (
     <div ref={ref} className={`ags-reveal ${className}`} style={{ animationDelay: `${delay}ms` }}>
@@ -122,7 +135,9 @@ function Nav() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 bg-white transition-shadow ${
-        scrolled ? "border-b border-black/10 shadow-[0_1px_0_rgba(0,0,0,0.04)]" : "border-b border-transparent"
+        scrolled
+          ? "border-b border-black/10 shadow-[0_1px_0_rgba(0,0,0,0.04)]"
+          : "border-b border-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
@@ -173,22 +188,41 @@ function Nav() {
 }
 
 function Hero() {
+  const [videoFailed, setVideoFailed] = useState(false);
   return (
     <section id="top" className="relative bg-black text-white overflow-hidden pt-16">
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `url(${heroRunway})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        aria-hidden
-      />
+      {/* Background video (with image fallback) */}
+      {!videoFailed && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onError={() => setVideoFailed(true)}
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          aria-hidden
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+      )}
+      {videoFailed && (
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `url(${heroRunway})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          aria-hidden
+        />
+      )}
+      {/* Dark gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.95) 75%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.85) 100%)",
         }}
         aria-hidden
       />
@@ -211,13 +245,14 @@ function Hero() {
         </Reveal>
         <Reveal delay={120}>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] max-w-5xl">
-            Engineering the Future of Aviation Infrastructure
+            Built for Aviation. Trusted by Industry.
           </h1>
         </Reveal>
         <Reveal delay={240}>
-          <p className="mt-8 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
-            From runway construction to precision navigation systems — AGS delivers end-to-end airport
-            infrastructure solutions for governments and private investors worldwide.
+          <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+            AGS delivers end-to-end airport infrastructure — from precision navigation systems to
+            operational support. Wherever airports need to be built, equipped, or certified, we're
+            the team that makes it happen.
           </p>
         </Reveal>
         <Reveal delay={360}>
@@ -238,7 +273,6 @@ function Hero() {
         </Reveal>
       </div>
 
-      {/* runway line */}
       <div className="relative h-px bg-white/20" aria-hidden />
     </section>
   );
@@ -246,13 +280,23 @@ function Hero() {
 
 function About() {
   const stats = [
-    { value: "15+", label: "Years Experience" },
-    { value: "20+", label: "Projects Delivered" },
-    { value: "10+", label: "Countries Served" },
+    { value: "35+", label: "Years of Experience" },
+    { value: "10+", label: "Projects Delivered" },
+    { value: "100%", label: "ICAO Standard Compliance" },
   ];
   return (
-    <section id="about" className="bg-white text-black">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
+    <section id="about" className="relative bg-white text-black overflow-hidden">
+      {/* Subtle background image */}
+      <div
+        className="absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage: `url(${BG_ABOUT})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 — About</p>
@@ -262,10 +306,11 @@ function About() {
           </Reveal>
           <Reveal delay={120}>
             <p className="text-lg text-black/70 leading-relaxed">
-              AGS is a specialized aviation infrastructure firm serving civil aviation authorities,
-              transport ministries, and private airport developers. We provide turnkey solutions
-              spanning equipment supply, installation, commissioning, and full operational support —
-              built to international standards and engineered to last.
+              Aerotech Global Services is a specialized aviation infrastructure firm with over
+              three decades of experience. We serve multinational corporations, local enterprises,
+              and government bodies — providing turnkey solutions that span equipment supply,
+              installation, commissioning, and full operational support, all built to international
+              standards.
             </p>
           </Reveal>
         </div>
@@ -287,6 +332,53 @@ function About() {
   );
 }
 
+function Clients() {
+  const clients = [
+    { name: "MCC", sub: "Overseas" },
+    { name: "CAA", sub: "Pakistan" },
+    { name: "ICAO", sub: "International" },
+    { name: "Meraj Airlines", sub: "" },
+    { name: "UCSI", sub: "" },
+    { name: "Barrick Gold", sub: "" },
+  ];
+  const loop = [...clients, ...clients];
+  return (
+    <section className="bg-[#111111] text-white border-y border-white/10">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+        <Reveal>
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight">
+              Trusted By Industry Leaders
+            </h2>
+            <p className="mt-4 text-sm md:text-base text-white/60 max-w-xl mx-auto">
+              Working alongside leading organizations in aviation and infrastructure.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="ags-marquee-track flex items-center gap-16">
+            {loop.map((c, i) => (
+              <div
+                key={`${c.name}-${i}`}
+                className="flex items-baseline gap-2 px-8 py-4 border border-white/15 shrink-0"
+                style={{ filter: "grayscale(100%) brightness(200%)" }}
+              >
+                <span className="text-2xl md:text-3xl font-black tracking-tight text-white">
+                  {c.name}
+                </span>
+                {c.sub && (
+                  <span className="text-xs uppercase tracking-[0.2em] text-white/50">{c.sub}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ServiceCard({
   icon,
   title,
@@ -299,7 +391,7 @@ function ServiceCard({
   number: string;
 }) {
   return (
-    <div className="group border border-white/20 bg-transparent text-white p-10 md:p-12 transition-all duration-300 hover:bg-white hover:text-black hover:border-white cursor-default">
+    <div className="group border border-white/20 bg-black/40 text-white p-10 md:p-12 transition-all duration-300 hover:bg-white hover:text-black hover:border-white cursor-default h-full flex flex-col">
       <div className="flex items-center justify-between mb-10">
         <div className="h-14 w-14 grid place-items-center border border-white/30 group-hover:border-black/30 transition-colors">
           {icon}
@@ -309,7 +401,7 @@ function ServiceCard({
         </span>
       </div>
       <h3 className="text-2xl md:text-3xl font-bold tracking-tight leading-tight">{title}</h3>
-      <p className="mt-6 text-base leading-relaxed text-white/70 group-hover:text-black/70 transition-colors">
+      <p className="mt-6 text-base leading-relaxed text-white/70 group-hover:text-black/70 transition-colors flex-1">
         {description}
       </p>
       <div className="mt-10 inline-flex items-center gap-2 text-sm font-semibold">
@@ -320,37 +412,66 @@ function ServiceCard({
 }
 
 function Services() {
+  const services = [
+    {
+      number: "/ 01",
+      icon: <RadioTower size={26} />,
+      title: "Navaid Equipment Supply & Installation",
+      description:
+        "We supply, install, and commission internationally certified navigation aids including Instrument Landing Systems (ILS), Non-Directional Beacons (NDB), Precision Approach Path Indicators (PAPI), and more — ensuring airports meet ICAO standards.",
+    },
+    {
+      number: "/ 02",
+      icon: <Building2 size={26} />,
+      title: "Airport Design & Operational Consulting",
+      description:
+        "From initial feasibility and airfield design to full operational consulting, AGS guides airports through every phase of development — ensuring every element, from taxiways to terminal infrastructure, is compliant with ICAO standards from day one.",
+    },
+    {
+      number: "/ 03",
+      icon: <FileCheck size={26} />,
+      title: "Airstrip Certification & Licensing",
+      description:
+        "We specialize in navigating the regulatory process to obtain airstrip licenses, operational permits, and certifications from relevant civil aviation authorities. Our team handles documentation, inspections, and compliance so you can focus on operations.",
+    },
+    {
+      number: "/ 04",
+      icon: <Plane size={26} />,
+      title: "Flight Operations & Airline Partnerships",
+      description:
+        "AGS supports air transfer operations by facilitating partnerships between airport operators and airlines. We assist in establishing route structures, ground handling frameworks, and operational procedures that meet regulatory requirements and enable commercial aviation activity.",
+    },
+  ];
   return (
-    <section id="services" className="bg-[#111111] text-white">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
+    <section id="services" className="relative bg-[#111111] text-white overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-[0.15]"
+        style={{
+          backgroundImage: `url(${BG_SERVICES})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-[#111111]/70" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">02 — Services</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] max-w-3xl">
             Our Services
           </h2>
           <p className="mt-6 text-lg text-white/60 max-w-2xl">
-            Two core practices, engineered to bring airports online and keep them running at
+            Four core practices, engineered to bring airports online and keep them running at
             international standards.
           </p>
         </Reveal>
 
         <div className="mt-16 grid md:grid-cols-2 gap-6">
-          <Reveal delay={100}>
-            <ServiceCard
-              number="/ 01"
-              icon={<RadioTower size={26} />}
-              title="Navaid Equipment Supply & Installation"
-              description="We supply, install, and commission internationally certified navigation aids — including Instrument Landing Systems (ILS), Non-Directional Beacons (NDB), Precision Approach Path Indicators (PAPI), and more — ensuring airports meet ICAO standards."
-            />
-          </Reveal>
-          <Reveal delay={200}>
-            <ServiceCard
-              number="/ 02"
-              icon={<Plane size={26} />}
-              title="Flight Operations Support"
-              description="From procedures design to operational consulting, AGS supports airport operators and civil aviation authorities in establishing safe, efficient, and compliant flight operations."
-            />
-          </Reveal>
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={100 + i * 100}>
+              <ServiceCard {...s} />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -361,28 +482,37 @@ function WhyUs() {
   const items = [
     {
       icon: <ShieldCheck size={24} />,
-      title: "ICAO Compliant",
-      desc: "All our equipment and services meet international civil aviation standards.",
+      title: "ICAO Compliant & Globally Recognized",
+      desc: "All our equipment, installations, and services conform to ICAO standards — the globally recognized benchmark for safe and efficient civil aviation.",
     },
     {
       icon: <Workflow size={24} />,
-      title: "End-to-End Solutions",
-      desc: "From procurement to commissioning, we handle every stage of delivery.",
+      title: "End-to-End Delivery",
+      desc: "From initial assessment and equipment procurement through installation, commissioning, certification, and ongoing support — we own every stage of the project so nothing falls through the cracks.",
     },
     {
-      icon: <Landmark size={24} />,
-      title: "Trusted by Governments",
-      desc: "We work directly with civil aviation authorities and transport ministries.",
+      icon: <Building size={24} />,
+      title: "Trusted by Multinationals",
+      desc: "AGS has been the aviation infrastructure partner of choice for leading multinational corporations and industry bodies operating in complex, demanding environments.",
     },
     {
-      icon: <Globe2 size={24} />,
-      title: "Global Reach",
-      desc: "Operating across multiple countries with deep local expertise.",
+      icon: <Cog size={24} />,
+      title: "Technical Excellence",
+      desc: "Our team brings deep technical expertise in avionics, airfield systems, and regulatory compliance — ensuring every project is delivered with precision, on spec, and on time.",
     },
   ];
   return (
-    <section id="why" className="bg-white text-black">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
+    <section id="why" className="relative bg-white text-black overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage: `url(${BG_WHY})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 — Advantage</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
@@ -433,7 +563,10 @@ function Contact() {
             </p>
 
             <div className="mt-12 space-y-6">
-              <a href="mailto:info@aerotechglobalservices.com" className="flex items-center gap-4 group">
+              <a
+                href="mailto:info@aerotechglobalservices.com"
+                className="flex items-center gap-4 group"
+              >
                 <span className="h-12 w-12 grid place-items-center border border-white/30 group-hover:bg-white group-hover:text-black transition-colors">
                   <Mail size={18} />
                 </span>
@@ -457,7 +590,10 @@ function Contact() {
           <Reveal delay={150}>
             <form onSubmit={onSubmit} className="border border-white/20 p-8 md:p-10 space-y-6">
               <div>
-                <label htmlFor="name" className="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2"
+                >
                   Name
                 </label>
                 <input
@@ -468,7 +604,10 @@ function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -480,7 +619,10 @@ function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -514,8 +656,12 @@ function Footer() {
           © 2025 Aerotech Global Services. All rights reserved.
         </p>
         <div className="flex items-center gap-6 text-sm text-white/60">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-white transition-colors">
+            Privacy Policy
+          </a>
+          <a href="#" className="hover:text-white transition-colors">
+            Terms of Service
+          </a>
         </div>
       </div>
     </footer>
@@ -529,6 +675,7 @@ function Index() {
       <main>
         <Hero />
         <About />
+        <Clients />
         <Services />
         <WhyUs />
         <Contact />
