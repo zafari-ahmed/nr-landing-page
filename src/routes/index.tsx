@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import {
+  RadioTower,
   Plane,
   ShieldCheck,
   Workflow,
@@ -11,6 +13,7 @@ import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "rea
   X,
   Mail,
   Phone,
+  ArrowRight,
 import { RadioTower, Building2, FileCheck, Plane, Truck, ShieldCheck, Workflow, Building, Cog } from 'lucide-react';
 
 export const Route = createFileRoute("/")({
@@ -313,16 +316,16 @@ function About() {
 
 function Clients() {
   const clients = [
-    { src: "/logos/mcc.png", alt: "MCC Overseas" },
-    { src: "/logos/caa.png", alt: "CAA Pakistan" },
-    { src: "/logos/icao.png", alt: "ICAO International" },
-    { src: "/logos/meraj.png", alt: "Meraj Airlines" },
-    { src: "/logos/ucsi.png", alt: "UCSI" },
-    { src: "/logos/barrick.svg", alt: "Barrick Gold" },
-    { src: "/logos/ial.png", alt: "IAL Pakistan" },
-    { src: "/logos/nautel.png", alt: "Nautel" },
+  { src: "/logos/mcc.png",   alt: "MCC Overseas" },
+  { src: "/logos/caa.png",   alt: "CAA Pakistan" },
+  { src: "/logos/icao.png",  alt: "ICAO International" },
+  { src: "/logos/meraj.png", alt: "Meraj Airlines" },
+  { src: "/logos/ucsi.png",  alt: "UCSI" },
+  { src: "/logos/barrick.svg", alt: "Barrick Gold" },
+  { src: "/logos/ial.png",   alt: "IAL Pakistan" },
+  { src: "/logos/nautel.png", alt: "Nautel" },
   ];
-  const clientLoop = [...clients, ...clients];
+  const loop = [...clients, ...clients];
   return (
     <section className="bg-[#111111] text-white border-y border-white/10">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
@@ -339,7 +342,7 @@ function Clients() {
 
         <div className="mt-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="ags-marquee-track flex items-center gap-16">
-            {clientLoop.map((cl, i) => (
+            {loop.map((cl, i) => (
               <div
                 key={cl.src + i}
                 className="flex items-center px-8 py-4 border border-white/15 shrink-0"
@@ -350,6 +353,8 @@ function Clients() {
                   className="h-8 w-auto max-w-[120px] object-contain"
                   style={{ filter: "brightness(0) invert(1)" }}
                 />
+              </div>
+            ))}
               </div>
             ))}
           </div>
@@ -576,21 +581,12 @@ function Services() {
       image: IMG_FLIGHT_OPS,
       tags: ["Airline Partnerships", "Ground Ops", "Route Planning"],
     },
-    {
-      number: "05",
-      icon: <Truck size={18} />,
-      title: "Airside Ground Equipment Supply",
-      description:
-        "AGS supplies critical airside ground support equipment — fuel bowsers, fire tenders, and maintenance vehicles — ensuring airports operate safely and efficiently from day one.",
-      image: IMG_NAVAID,
-      tags: ["Fuel Bowsers", "Fire Tenders", "GSE"],
-    },
   ];
   return (
     <section id="services" className="bg-white text-black">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-24 md:pt-32 pb-6">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">02 Services</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">02 — Services</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] max-w-3xl">
             What We Do
           </h2>
@@ -632,6 +628,15 @@ function WhyUs() {
       icon: <Cog size={24} />,
       title: "Technical Excellence",
       desc: "Our team brings deep technical expertise in avionics, airfield systems, and regulatory compliance — ensuring every project is delivered with precision, on spec, and on time.",
+    },
+    {
+      number: "05",
+      icon: <Truck size={18} />,
+      title: "Airside Ground Equipment Supply",
+      description:
+        "AGS supplies critical airside ground support equipment — fuel bowsers, fire tenders, and maintenance vehicles — ensuring airports operate safely and efficiently from day one.",
+      image: IMG_NAVAID,
+      tags: ["Fuel Bowsers", "Fire Tenders", "GSE"],
     },
   ];
   return (
@@ -677,7 +682,7 @@ function Contact() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-16">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">04 Contact</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">04 — Contact</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Get In Touch
             </h2>
