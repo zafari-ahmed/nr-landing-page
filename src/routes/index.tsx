@@ -45,16 +45,12 @@ export const Route = createFileRoute("/")({
 });
 
 // Editorial photography (Unsplash placeholders)
-const IMG_HERO =
-  "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=2400&q=90";
-const IMG_PROJECT_RUNWAY =
-  "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=85";
-const IMG_NAVAID =
-  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=85";
-const IMG_FLIGHT_OPS =
-  "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1600&q=85";
-const IMG_TOWER =
-  "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?auto=format&fit=crop&w=1600&q=85";
+
+const IMG_HERO = "/src/assets/hero-runway-dusk.jpg";
+const IMG_PROJECT_RUNWAY = "/src/assets/runway-inspection.jpg";
+const IMG_NAVAID = "/src/assets/approach-lights.jpg";
+const IMG_FLIGHT_OPS = "/src/assets/tarmac-aircraft.jpg";
+const IMG_TOWER = "/src/assets/ils-tower.jpg";
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
