@@ -12,7 +12,7 @@ import {RadioTower,
   X,
   Mail,
   Phone,
-  ArrowRight,, Truck } from "lucide-react";
+import { RadioTower, Building2, FileCheck, Plane, Truck, ShieldCheck, Workflow, Building, Cog } from 'lucide-react';
 
 export const Route = createFileRoute("/")({
   head: () => ({
