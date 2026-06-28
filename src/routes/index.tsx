@@ -193,12 +193,16 @@ function Hero() {
       style={{ minHeight: "100vh", paddingTop: "64px" }}
     >
       <div className="absolute inset-0">
-        <img
-          src={IMG_HERO}
-          alt=""
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
           aria-hidden
-        />
+        >
+          <source src="https://videos.pexels.com/video-files/3657191/3657191-hd_1920_1080_30fps.mp4" type="video/mp4" />
+        </video>
         <div
           className="absolute inset-0"
           style={{
