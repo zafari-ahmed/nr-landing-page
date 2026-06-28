@@ -1,19 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import {
-  RadioTower,
-  Plane,
-  ShieldCheck,
-  Workflow,
-  Building,
-  Building2,
-  FileCheck,
-  Cog,
-  Menu,
-  X,
-  Mail,
-  Phone,
-  ArrowRight,
 import { RadioTower, Building2, FileCheck, Plane, Truck, ShieldCheck, Workflow, Building, Cog } from 'lucide-react';
 
 export const Route = createFileRoute("/")({
@@ -316,13 +302,13 @@ function About() {
 
 function Clients() {
   const clients = [
-  { src: "/logos/mcc.png",   alt: "MCC Overseas" },
-  { src: "/logos/caa.png",   alt: "CAA Pakistan" },
-  { src: "/logos/icao.png",  alt: "ICAO International" },
-  { src: "/logos/meraj.png", alt: "Meraj Airlines" },
-  { src: "/logos/ucsi.png",  alt: "UCSI" },
+  { src: "/logos/mcc.png",    alt: "MCC Overseas" },
+  { src: "/logos/caa.png",    alt: "CAA Pakistan" },
+  { src: "/logos/icao.png",   alt: "ICAO International" },
+  { src: "/logos/meraj.png",  alt: "Meraj Airlines" },
+  { src: "/logos/ucsi.png",   alt: "UCSI" },
   { src: "/logos/barrick.svg", alt: "Barrick Gold" },
-  { src: "/logos/ial.png",   alt: "IAL Pakistan" },
+  { src: "/logos/ial.png",    alt: "IAL Pakistan" },
   { src: "/logos/nautel.png", alt: "Nautel" },
   ];
   const loop = [...clients, ...clients];
