@@ -19,13 +19,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aerotech Global Services — Aviation Infrastructure" },
+      { title: "Aerotech Global Services â Aviation Infrastructure" },
       {
         name: "description",
         content:
           "AGS delivers end-to-end airport infrastructure: navaid equipment supply, installation, certification, and flight operations support for multinationals and governments worldwide.",
       },
-      { property: "og:title", content: "Aerotech Global Services — Aviation Infrastructure" },
+      { property: "og:title", content: "Aerotech Global Services â Aviation Infrastructure" },
       {
         property: "og:description",
         content:
@@ -46,11 +46,11 @@ export const Route = createFileRoute("/")({
 
 // Editorial photography (Unsplash placeholders)
 
-const IMG_HERO = "/src/assets/hero-runway-dusk.jpg";
-const IMG_PROJECT_RUNWAY = "/src/assets/runway-inspection.jpg";
-const IMG_NAVAID = "/src/assets/approach-lights.jpg";
-const IMG_FLIGHT_OPS = "/src/assets/tarmac-aircraft.jpg";
-const IMG_TOWER = "/src/assets/ils-tower.jpg";
+const IMG_HERO = "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=2400&q=90";
+const IMG_PROJECT_RUNWAY = "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=2000&q=85";
+const IMG_NAVAID = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=85";
+const IMG_FLIGHT_OPS = "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1600&q=85";
+const IMG_TOWER = "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?auto=format&fit=crop&w=1600&q=85";
 
 function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
@@ -226,7 +226,7 @@ function Hero() {
         </Reveal>
         <Reveal delay={240}>
           <p className="mt-6 text-lg text-white/80 max-w-xl leading-relaxed">
-            AGS delivers end-to-end airport infrastructure — from precision navigation systems to
+            AGS delivers end-to-end airport infrastructure â from precision navigation systems to
             operational support. Wherever airports need to be built, equipped, or certified, we make
             it happen.
           </p>
@@ -269,14 +269,14 @@ function About() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 — About</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 â About</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Who We Are
             </h2>
             <p className="mt-8 text-lg text-black/70 leading-relaxed">
               Aerotech Global Services is a specialized aviation infrastructure firm with over
               three decades of experience. We serve multinational corporations, local enterprises,
-              and government bodies — providing turnkey solutions that span equipment supply,
+              and government bodies â providing turnkey solutions that span equipment supply,
               installation, commissioning, and full operational support, all built to international
               standards.
             </p>
@@ -426,7 +426,7 @@ function Projects() {
                     Services
                   </span>
                   <span className="font-semibold">
-                    Consulting, Design, ILS · NDB · PAPI Installation
+                    Consulting, Design, ILS Â· NDB Â· PAPI Installation
                   </span>
                 </div>
               </div>
@@ -439,7 +439,7 @@ function Projects() {
                   AGS delivered a complete greenfield airstrip solution for a leading multinational
                   mining company operating in Balochistan. From initial site consulting and
                   airstrip design through to the full installation and commissioning of ILS, NDB,
-                  and PAPI navigation systems — AGS managed the entire scope, bringing the airstrip
+                  and PAPI navigation systems â AGS managed the entire scope, bringing the airstrip
                   from concept to fully certified and operational.
                 </p>
               </div>
@@ -543,7 +543,7 @@ function Services() {
       icon: <RadioTower size={18} />,
       title: "Navaid Equipment Supply & Installation",
       description:
-        "We supply, install, and commission internationally certified navigation aids — ILS, NDB, PAPI, and more — ensuring every airport meets ICAO standards from day one.",
+        "We supply, install, and commission internationally certified navigation aids â ILS, NDB, PAPI, and more â ensuring every airport meets ICAO standards from day one.",
       image: IMG_NAVAID,
       tags: ["ILS", "NDB", "PAPI", "ICAO Certified"],
     },
@@ -552,7 +552,7 @@ function Services() {
       icon: <Building2 size={18} />,
       title: "Airport Design & Operational Consulting",
       description:
-        "From initial feasibility and airfield design to full operational consulting, AGS guides airports through every phase of development — compliant with ICAO standards from the ground up.",
+        "From initial feasibility and airfield design to full operational consulting, AGS guides airports through every phase of development â compliant with ICAO standards from the ground up.",
       image: IMG_PROJECT_RUNWAY,
       tags: ["Feasibility", "Airfield Design", "Operations"],
     },
@@ -561,7 +561,7 @@ function Services() {
       icon: <FileCheck size={18} />,
       title: "Airstrip Certification & Licensing",
       description:
-        "We specialize in obtaining airstrip licenses, operational permits, and certifications from civil aviation authorities — handling documentation, inspections, and regulatory compliance end to end.",
+        "We specialize in obtaining airstrip licenses, operational permits, and certifications from civil aviation authorities â handling documentation, inspections, and regulatory compliance end to end.",
       image: IMG_TOWER,
       tags: ["CAA Approvals", "Permits", "Compliance"],
     },
@@ -570,7 +570,7 @@ function Services() {
       icon: <Plane size={18} />,
       title: "Flight Operations & Airline Partnerships",
       description:
-        "AGS facilitates partnerships between airport operators and airlines — from route structures and ground handling frameworks to operational procedures that enable commercial aviation activity.",
+        "AGS facilitates partnerships between airport operators and airlines â from route structures and ground handling frameworks to operational procedures that enable commercial aviation activity.",
       image: IMG_FLIGHT_OPS,
       tags: ["Airline Partnerships", "Ground Ops", "Route Planning"],
     },
@@ -579,7 +579,7 @@ function Services() {
     <section id="services" className="bg-white text-black">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-24 md:pt-32 pb-6">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">02 — Services</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">02 â Services</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] max-w-3xl">
             What We Do
           </h2>
@@ -605,12 +605,12 @@ function WhyUs() {
     {
       icon: <ShieldCheck size={24} />,
       title: "ICAO Compliant & Globally Recognized",
-      desc: "All our equipment, installations, and services conform to ICAO standards — the globally recognized benchmark for safe and efficient civil aviation.",
+      desc: "All our equipment, installations, and services conform to ICAO standards â the globally recognized benchmark for safe and efficient civil aviation.",
     },
     {
       icon: <Workflow size={24} />,
       title: "End-to-End Delivery",
-      desc: "From initial assessment and equipment procurement through installation, commissioning, certification, and ongoing support — we own every stage of the project so nothing falls through the cracks.",
+      desc: "From initial assessment and equipment procurement through installation, commissioning, certification, and ongoing support â we own every stage of the project so nothing falls through the cracks.",
     },
     {
       icon: <Building size={24} />,
@@ -620,14 +620,14 @@ function WhyUs() {
     {
       icon: <Cog size={24} />,
       title: "Technical Excellence",
-      desc: "Our team brings deep technical expertise in avionics, airfield systems, and regulatory compliance — ensuring every project is delivered with precision, on spec, and on time.",
+      desc: "Our team brings deep technical expertise in avionics, airfield systems, and regulatory compliance â ensuring every project is delivered with precision, on spec, and on time.",
     },
   ];
   return (
     <section id="why" className="relative bg-white text-black overflow-hidden border-t border-black/10">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 — Advantage</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 â Advantage</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
             Why AGS?
           </h2>
@@ -666,7 +666,7 @@ function Contact() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-16">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">04 — Contact</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">04 â Contact</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Get In Touch
             </h2>
@@ -766,7 +766,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <Logo dark />
         <p className="text-sm text-white/50">
-          © 2025 Aerotech Global Services. All rights reserved.
+          Â© 2025 Aerotech Global Services. All rights reserved.
         </p>
         <div className="flex items-center gap-6 text-sm text-white/60">
           <a href="#" className="hover:text-white transition-colors">
