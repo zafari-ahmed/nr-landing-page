@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import {
-  RadioTower,
+import {RadioTower,
   Plane,
   ShieldCheck,
   Workflow,
@@ -13,8 +12,7 @@ import {
   X,
   Mail,
   Phone,
-  ArrowRight,
-} from "lucide-react";
+  ArrowRight,, Truck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -266,14 +264,14 @@ function About() {
   const stats = [
     { value: "35+", label: "Years of Experience" },
     { value: "10+", label: "Projects Delivered" },
-    { value: "100%", label: "ICAO Standard Compliance" },
+    { value: "10,000 FT", label: "RUNWAY CONSTRUCTED" },
   ];
   return (
     <section id="about" className="relative bg-white text-black">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 — About</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 About</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Who We Are
             </h2>
@@ -316,14 +314,16 @@ function About() {
 
 function Clients() {
   const clients = [
-    { name: "MCC", sub: "Overseas" },
-    { name: "CAA", sub: "Pakistan" },
-    { name: "ICAO", sub: "International" },
-    { name: "Meraj Airlines", sub: "" },
-    { name: "UCSI", sub: "" },
-    { name: "Barrick Gold", sub: "" },
+    { src: "/logos/mcc.png", alt: "MCC Overseas" },
+    { src: "/logos/caa.png", alt: "CAA Pakistan" },
+    { src: "/logos/icao.png", alt: "ICAO International" },
+    { src: "/logos/meraj.png", alt: "Meraj Airlines" },
+    { src: "/logos/ucsi.png", alt: "UCSI" },
+    { src: "/logos/barrick.svg", alt: "Barrick Gold" },
+    { src: "/logos/ial.png", alt: "IAL Pakistan" },
+    { src: "/logos/nautel.png", alt: "Nautel" },
   ];
-  const loop = [...clients, ...clients];
+  const clientLoop = [...clients, ...clients];
   return (
     <section className="bg-[#111111] text-white border-y border-white/10">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
@@ -340,7 +340,7 @@ function Clients() {
 
         <div className="mt-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="ags-marquee-track flex items-center gap-16">
-            {loop.map((c, i) => (
+            {clientLoop.map((cl, i) => (
               <div
                 key={`${c.name}-${i}`}
                 className="flex items-baseline gap-2 px-8 py-4 border border-white/15 shrink-0"
@@ -578,17 +578,26 @@ function Services() {
       image: IMG_FLIGHT_OPS,
       tags: ["Airline Partnerships", "Ground Ops", "Route Planning"],
     },
+    {
+      number: "05",
+      icon: <Truck size={18} />,
+      title: "Airside Ground Equipment Supply",
+      description:
+        "AGS supplies critical airside ground support equipment — fuel bowsers, fire tenders, and maintenance vehicles — ensuring airports operate safely and efficiently from day one.",
+      image: IMG_NAVAID,
+      tags: ["Fuel Bowsers", "Fire Tenders", "GSE"],
+    },
   ];
   return (
     <section id="services" className="bg-white text-black">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-24 md:pt-32 pb-6">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">02 — Services</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-4">02 Services</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] max-w-3xl">
             What We Do
           </h2>
           <p className="mt-4 text-lg text-black/60 max-w-2xl">
-            Four core practices, engineered to bring airports online and keep them running at
+            Four core practices, engineered to bring airports to life and keep them running at
             international standards.
           </p>
         </Reveal>
@@ -631,7 +640,7 @@ function WhyUs() {
     <section id="why" className="relative bg-white text-black overflow-hidden border-t border-black/10">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 — Advantage</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 Advantage</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
             Why AGS?
           </h2>
@@ -670,7 +679,7 @@ function Contact() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-16">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">04 — Contact</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-6">04 Contact</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Get In Touch
             </h2>
