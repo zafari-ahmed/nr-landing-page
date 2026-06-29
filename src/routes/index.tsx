@@ -535,7 +535,7 @@ function Services() {
       title: "Navaid Equipment Supply & Installation",
       description:
         "We supply, install, and commission internationally certified navigation aids — ILS, NDB, PAPI, and more — ensuring every airport meets ICAO standards from day one.",
-      image: IMG_NAVAID,
+      image: "/images/card5.jpg",
       tags: ["ILS", "NDB", "PAPI", "ICAO Certified"],
     },
     {
@@ -544,7 +544,7 @@ function Services() {
       title: "Airport Design & Operational Consulting",
       description:
         "From initial feasibility and airfield design to full operational consulting, AGS guides airports through every phase of development — compliant with ICAO standards from the ground up.",
-      image: IMG_PROJECT_RUNWAY,
+      image: "/images/card2.jpg",
       tags: ["Feasibility", "Airfield Design", "Operations"],
     },
     {
@@ -562,7 +562,7 @@ function Services() {
       title: "Flight Operations & Airline Partnerships",
       description:
         "AGS facilitates partnerships between airport operators and airlines — from route structures and ground handling frameworks to operational procedures that enable commercial aviation activity.",
-      image: IMG_FLIGHT_OPS,
+      image: "/images/card4.jpg",
       tags: ["Airline Partnerships", "Ground Ops", "Route Planning"],
     },
   {
