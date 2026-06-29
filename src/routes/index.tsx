@@ -535,7 +535,7 @@ function Services() {
       title: "Navaid Equipment Supply & Installation",
       description:
         "We supply, install, and commission internationally certified navigation aids — ILS, NDB, PAPI, and more — ensuring every airport meets ICAO standards from day one.",
-      image: "/images/card5.jpg",
+      image: IMG_NAVAID,
       tags: ["ILS", "NDB", "PAPI", "ICAO Certified"],
     },
     {
@@ -571,7 +571,7 @@ function Services() {
     title: "Airside Ground Equipment Supply",
     description:
       "AGS supplies critical airside ground support equipment — fuel bowsers, fire tenders, and maintenance vehicles — ensuring airports operate safely and efficiently from day one.",
-    image: IMG_NAVAID,
+    image: "/images/card5.jpg",
     tags: ["Fuel Bowsers", "Fire Tenders", "GSE"],
   },
   ];
