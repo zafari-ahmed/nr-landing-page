@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { RadioTower, Building2, FileCheck, Plane, Truck, ShieldCheck, Workflow, Building, Cog, ArrowRight, Menu, Mail, Phone } from 'lucide-react';
+import { RadioTower, Building2, FileCheck, Plane, Truck, ShieldCheck, Workflow, Building, Cog, ArrowRight, Menu, X, Mail, Phone } from 'lucide-react';
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -187,7 +187,7 @@ function Hero() {
           className="w-full h-full object-cover"
           aria-hidden
         >
-          <source src="https://videos.pexels.com/video-files/3657191/3657191-hd_1920_1080_30fps.mp4" type="video/mp4" />
+          <source src="/video/hero-section.mp4" type="video/mp4" />
         </video>
         <div
           className="absolute inset-0"
@@ -336,7 +336,7 @@ function Clients() {
                 <img
                   src={cl.src}
                   alt={cl.alt}
-                  className="h-12 w-auto max-w-[120px] object-contain"
+                  className="h-25 w-25 object-contain"
                 />
               </div>
             ))}
