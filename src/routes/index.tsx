@@ -328,18 +328,19 @@ function Clients() {
 
         <div className="mt-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="ags-marquee-track flex items-center gap-16">
-            {loop.map((c, i) => (
+            {loop.map((cl, i) => (
               <div
-                key={`${c.name}-${i}`}
-                className="flex items-baseline gap-2 px-8 py-4 border border-white/15 shrink-0"
-                style={{ filter: "grayscale(100%) brightness(200%)" }}
+                key={cl.src + i}
+                className="flex items-center px-8 py-4 border border-white/15 shrink-0"
               >
-                <span className="text-2xl md:text-3xl font-black tracking-tight text-white">
-                  {c.name}
-                </span>
-                {c.sub && (
-                  <span className="text-xs uppercase tracking-[0.2em] text-white/50">{c.sub}</span>
-                )}
+                <img
+                  src={cl.src}
+                  alt={cl.alt}
+                  className="h-8 w-auto max-w-[120px] object-contain"
+                  style={{ filter: "brightness(0) invert(1)" }}
+                />
+              </div>
+            ))}
               </div>
             ))}
           </div>
