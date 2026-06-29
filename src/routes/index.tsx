@@ -331,13 +331,12 @@ function Clients() {
             {loop.map((cl, i) => (
               <div
                 key={cl.src + i}
-                className="flex items-center px-8 py-4 border border-white/15 shrink-0"
+                className="flex items-center px-8 py-4 border-white/15 shrink-0"
               >
                 <img
                   src={cl.src}
                   alt={cl.alt}
-                  className="h-8 w-auto max-w-[120px] object-contain"
-                  style={{ filter: "brightness(0) invert(1)" }}
+                  className="h-12 w-auto max-w-[120px] object-contain"
                 />
               </div>
             ))}
@@ -766,7 +765,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <Logo dark />
         <p className="text-sm text-white/50">
-          © 2025 Aerotech Global Services. All rights reserved.
+          © 2026 Aerotech Global Services. All rights reserved.
         </p>
         <div className="flex items-center gap-6 text-sm text-white/60">
           <a href="#" className="hover:text-white transition-colors">
