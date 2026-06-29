@@ -302,12 +302,14 @@ function About() {
 
 function Clients() {
   const clients = [
-    { name: "MCC", sub: "Overseas" },
-    { name: "CAA", sub: "Pakistan" },
-    { name: "ICAO", sub: "International" },
-    { name: "Meraj Airlines", sub: "" },
-    { name: "UCSI", sub: "" },
-    { name: "Barrick Gold", sub: "" },
+  { src: "/logos/mcc.png",    alt: "MCC Overseas" },
+  { src: "/logos/caa.png",    alt: "CAA Pakistan" },
+  { src: "/logos/icao.png",   alt: "ICAO International" },
+  { src: "/logos/meraj.png",  alt: "Meraj Airlines" },
+  { src: "/logos/ucsi.png",   alt: "UCSI" },
+  { src: "/logos/barrick.svg",alt: "Barrick Gold" },
+  { src: "/logos/ial.png",    alt: "IAL Pakistan" },
+  { src: "/logos/nautel.png", alt: "Nautel" },
   ];
   const loop = [...clients, ...clients];
   return (
