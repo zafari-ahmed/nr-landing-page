@@ -252,7 +252,7 @@ function About() {
   const stats = [
     { value: "35+", label: "Years of Experience" },
     { value: "10+", label: "Projects Delivered" },
-    { value: "10,000 FT", label: "RUNWAY CONSTRUCTED" },
+    { value: "ICAO", label: "CERTIFIED STANDARDS" },
   ];
   return (
     <section id="about" className="relative bg-white text-black">
@@ -392,9 +392,9 @@ function Projects() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-3xl md:text-4xl font-black tracking-tight">100%</div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">10,000 FT</div>
                   <div className="mt-1 text-xs uppercase tracking-[0.18em] text-black/50">
-                    Turnkey Scope
+                    Airstrip Constructed
                   </div>
                 </div>
               </div>
