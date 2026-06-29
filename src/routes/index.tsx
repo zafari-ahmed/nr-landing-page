@@ -252,14 +252,14 @@ function About() {
   const stats = [
     { value: "35+", label: "Years of Experience" },
     { value: "10+", label: "Projects Delivered" },
-    { value: "10,000 FT", label: "RUNWAY CONSTRUCTED" },
+    { value: "100%", label: "ICAO Standard Compliance" },
   ];
   return (
     <section id="about" className="relative bg-white text-black">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 About</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">01 — About</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Who We Are
             </h2>
@@ -302,14 +302,12 @@ function About() {
 
 function Clients() {
   const clients = [
-  { src: "/logos/mcc.png",    alt: "MCC Overseas" },
-  { src: "/logos/caa.png",    alt: "CAA Pakistan" },
-  { src: "/logos/icao.png",   alt: "ICAO International" },
-  { src: "/logos/meraj.png",  alt: "Meraj Airlines" },
-  { src: "/logos/ucsi.png",   alt: "UCSI" },
-  { src: "/logos/barrick.svg", alt: "Barrick Gold" },
-  { src: "/logos/ial.png",    alt: "IAL Pakistan" },
-  { src: "/logos/nautel.png", alt: "Nautel" },
+    { name: "MCC", sub: "Overseas" },
+    { name: "CAA", sub: "Pakistan" },
+    { name: "ICAO", sub: "International" },
+    { name: "Meraj Airlines", sub: "" },
+    { name: "UCSI", sub: "" },
+    { name: "Barrick Gold", sub: "" },
   ];
   const loop = [...clients, ...clients];
   return (
@@ -328,19 +326,18 @@ function Clients() {
 
         <div className="mt-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="ags-marquee-track flex items-center gap-16">
-            {loop.map((cl, i) => (
+            {loop.map((c, i) => (
               <div
-                key={cl.src + i}
-                className="flex items-center px-8 py-4 border border-white/15 shrink-0"
+                key={`${c.name}-${i}`}
+                className="flex items-baseline gap-2 px-8 py-4 border border-white/15 shrink-0"
+                style={{ filter: "grayscale(100%) brightness(200%)" }}
               >
-                <img
-                  src={cl.src}
-                  alt={cl.alt}
-                  className="h-8 w-auto max-w-[120px] object-contain"
-                  style={{ filter: "brightness(0) invert(1)" }}
-                />
-              </div>
-            ))}
+                <span className="text-2xl md:text-3xl font-black tracking-tight text-white">
+                  {c.name}
+                </span>
+                {c.sub && (
+                  <span className="text-xs uppercase tracking-[0.2em] text-white/50">{c.sub}</span>
+                )}
               </div>
             ))}
           </div>
@@ -577,7 +574,7 @@ function Services() {
             What We Do
           </h2>
           <p className="mt-4 text-lg text-black/60 max-w-2xl">
-            Four core practices, engineered to bring airports to life and keep them running at
+            Four core practices, engineered to bring airports online and keep them running at
             international standards.
           </p>
         </Reveal>
@@ -615,21 +612,12 @@ function WhyUs() {
       title: "Technical Excellence",
       desc: "Our team brings deep technical expertise in avionics, airfield systems, and regulatory compliance — ensuring every project is delivered with precision, on spec, and on time.",
     },
-    {
-      number: "05",
-      icon: <Truck size={18} />,
-      title: "Airside Ground Equipment Supply",
-      description:
-        "AGS supplies critical airside ground support equipment — fuel bowsers, fire tenders, and maintenance vehicles — ensuring airports operate safely and efficiently from day one.",
-      image: IMG_NAVAID,
-      tags: ["Fuel Bowsers", "Fire Tenders", "GSE"],
-    },
   ];
   return (
     <section id="why" className="relative bg-white text-black overflow-hidden border-t border-black/10">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 Advantage</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-black/50 mb-6">03 — Advantage</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
             Why AGS?
           </h2>
