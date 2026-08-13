@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Block GoDaddy tracking scripts
+  RewriteRule ^tccl\.min\.js$ - [F,L]
+  RewriteRule ^traffic-assets/ - [F,L]
+  
+  # Redirect HTTP to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  # Handle SPA routing - for root domain
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule ^(.*)$ /index.html [L,QSA]
+</IfModule>
