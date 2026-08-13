@@ -379,21 +379,21 @@ function Projects() {
             <div className="bg-white p-10 md:p-14 flex flex-col justify-between">
               <div className="grid grid-cols-3 gap-4 mb-10 pb-10 border-b border-black/10">
                 <div>
-                  <div className="text-3xl md:text-4xl font-black tracking-tight">3</div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">3+</div>
                   <div className="mt-1 text-xs uppercase tracking-[0.18em] text-black/50">
-                    Navaids Installed
+                    NAVAIDS <br/>INSTALLED
                   </div>
                 </div>
                 <div>
-                  <div className="text-3xl md:text-4xl font-black tracking-tight">1</div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">4+</div>
                   <div className="mt-1 text-xs uppercase tracking-[0.18em] text-black/50">
-                    Airstrip Delivered
+                    SURVEYED <br/>AIRSTRIPS
                   </div>
                 </div>
                 <div>
-                  <div className="text-3xl md:text-4xl font-black tracking-tight">10,000 FT</div>
+                  <div className="text-3xl md:text-4xl font-black tracking-tight">3+</div>
                   <div className="mt-1 text-xs uppercase tracking-[0.18em] text-black/50">
-                    Airstrip Constructed
+                    OPERATIONAL <br/>SITES
                   </div>
                 </div>
               </div>
@@ -429,7 +429,7 @@ function Projects() {
                   AGS delivered a complete greenfield airstrip solution for a leading multinational
                   mining company operating in Balochistan. From initial site consulting and
                   airstrip design through to the full installation and commissioning of ILS, NDB,
-                  and PAPI navigation systems — AGS managed the entire scope, bringing the airstrip
+                  and PAPI navigation systems. AGS managed the entire scope, bringing the airstrip
                   from concept to fully certified and operational.
                 </p>
               </div>
