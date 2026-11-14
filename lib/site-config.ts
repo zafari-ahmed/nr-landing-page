@@ -119,6 +119,44 @@ export const keywordSets = {
     "airfield pavement",
     "earthwork and site grading",
   ],
+  // Terminals and airport buildings.
+  terminals: [
+    "airport terminal construction",
+    "terminal building construction",
+    "mini terminal construction",
+    "airport building construction",
+    "aircraft hangar construction",
+    "control tower construction",
+    "ATC tower construction",
+    "airport fire station construction",
+  ],
+  // Navigation aids, lighting and communication systems.
+  navigation: [
+    "airport navigation systems",
+    "navigational aids installation",
+    "navaid installation and commissioning",
+    "NDB installation",
+    "non-directional beacon installation",
+    "PAPI lights installation",
+    "runway edge lighting",
+    "airfield ground lighting",
+    "aviation lighting systems",
+    "weather station installation",
+    "AWOS installation",
+    "RT sets installation",
+    "air-ground radio installation",
+    "airport communication systems",
+  ],
+  // Airport-wide / umbrella terms.
+  airport: [
+    "airport infrastructure construction",
+    "aviation infrastructure development",
+    "aerodrome construction",
+    "airfield infrastructure",
+    "airport civil works",
+    "airside works",
+    "airport rehabilitation",
+  ],
   // Compliance and trust signals.
   compliance: [
     "ICAO compliant runway construction",
@@ -131,7 +169,15 @@ export const keywordSets = {
   ],
 } as const;
 
+// Clusters overlap by design (e.g. "runway edge lighting" is both a service
+// and a navigation term), so always compose page keywords through this helper
+// rather than spreading the arrays directly — otherwise the rendered
+// <meta name="keywords"> ends up with duplicate terms.
+export const mergeKeywords = (
+  ...sets: readonly (readonly string[])[]
+): string[] => Array.from(new Set(sets.flat()));
+
 // De-duplicated union of every cluster, for the home page.
-export const allKeywords: string[] = Array.from(
-  new Set(Object.values(keywordSets).flat())
+export const allKeywords: string[] = mergeKeywords(
+  ...Object.values(keywordSets)
 );

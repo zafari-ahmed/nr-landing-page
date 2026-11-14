@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactSection from "@/components/sections/ContactSection";
-import { siteConfig, keywordSets, ogDefaults } from "@/lib/site-config";
+import { siteConfig, keywordSets, mergeKeywords, ogDefaults } from "@/lib/site-config";
 
 const title = "Contact Us | Airport & Airstrip Construction Quotes";
 const description =
@@ -9,11 +9,13 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  keywords: [
-    ...keywordSets.local,
-    ...keywordSets.airstrip,
-    ...keywordSets.core,
-  ],
+  keywords: mergeKeywords(
+    keywordSets.local,
+    keywordSets.airstrip,
+    keywordSets.terminals,
+    keywordSets.airport,
+    keywordSets.core
+  ),
   alternates: {
     canonical: "/contact",
   },

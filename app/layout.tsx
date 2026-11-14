@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Providers } from "./providers";
-import { siteConfig, allKeywords, keywordSets } from "@/lib/site-config";
+import { siteConfig, allKeywords, keywordSets, mergeKeywords } from "@/lib/site-config";
 import "./globals.css";
 
 // Loaded via a classic <link> tag below (see <head>) instead of next/font/google.
@@ -87,7 +87,14 @@ export default function RootLayout({
       { "@type": "AdministrativeArea", name: "Balochistan" },
       { "@type": "Country", name: "Pakistan" },
     ],
-    knowsAbout: [...keywordSets.core, ...keywordSets.airstrip, ...keywordSets.compliance],
+    knowsAbout: mergeKeywords(
+      keywordSets.core,
+      keywordSets.airstrip,
+      keywordSets.terminals,
+      keywordSets.navigation,
+      keywordSets.airport,
+      keywordSets.compliance
+    ),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Aviation & Civil Engineering Services",
@@ -95,6 +102,9 @@ export default function RootLayout({
         "Airport Construction",
         "Runway & Airstrip Construction",
         "Private Airstrip Construction",
+        "Airport Terminal & Mini-Terminal Construction",
+        "Aircraft Hangar Construction",
+        "Control Tower Construction",
         "Taxiway & Apron Development",
         "Runway & Airstrip Lighting Systems",
         "Navigation & Communication Systems",

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import AboutSection from "@/components/sections/AboutSection";
-import { siteConfig, keywordSets, ogDefaults } from "@/lib/site-config";
+import { siteConfig, keywordSets, mergeKeywords, ogDefaults } from "@/lib/site-config";
 
 const title = "About Us | Airport & Airstrip Construction Experts";
 const description =
@@ -9,12 +9,15 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  keywords: [
-    ...keywordSets.core,
-    ...keywordSets.airstrip,
-    ...keywordSets.local,
-    ...keywordSets.compliance,
-  ],
+  keywords: mergeKeywords(
+    keywordSets.core,
+    keywordSets.airstrip,
+    keywordSets.terminals,
+    keywordSets.navigation,
+    keywordSets.airport,
+    keywordSets.local,
+    keywordSets.compliance
+  ),
   alternates: {
     canonical: "/about",
   },
