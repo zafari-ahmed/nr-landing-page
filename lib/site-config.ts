@@ -6,6 +6,9 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://nr-associates.com",
   phone: "+92-300-2252080",
   email: "admin@nr-associates.com",
+  // Contact form endpoint. The site is a static export, so this is the PHP
+  // handler in public/ (copied to out/submit.php), not a Next.js API route.
+  contactEndpoint: "/submit.php",
   address: {
     line1: "Suite # 514, 5th Floor, Marina Executive Tower, ",
     line2: "4 B, Mohammad Ali Society (M.A.C.H.S.), Karachi, Pakistan",

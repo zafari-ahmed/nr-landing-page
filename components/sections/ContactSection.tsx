@@ -59,7 +59,7 @@ const ContactSection = ({ headingLevel = "h2" }: ContactSectionProps) => {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(siteConfig.contactEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
