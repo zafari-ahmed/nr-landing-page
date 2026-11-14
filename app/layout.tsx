@@ -18,7 +18,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`,
+    default: `Airport, Terminal & Airstrip Construction | ${siteConfig.name}`,
     template: `%s | ${siteConfig.name}`,
   },
   alternates: {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: "en_PK",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`,
+    title: `Airport, Terminal & Airstrip Construction | ${siteConfig.name}`,
     description: siteConfig.description,
     images: [
       {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`,
+    title: `Airport, Terminal & Airstrip Construction | ${siteConfig.name}`,
     description: siteConfig.description,
     images: ["/assets/hero-airport-construction.jpg"],
   },

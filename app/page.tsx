@@ -6,7 +6,7 @@ import ClientsSection from "@/components/sections/ClientsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import { siteConfig, allKeywords, ogDefaults } from "@/lib/site-config";
 
-const title = `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`;
+const title = `Airport, Terminal & Airstrip Construction | ${siteConfig.name}`;
 
 export const metadata: Metadata = {
   title,
