@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
 import AboutSection from "@/components/sections/AboutSection";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, keywordSets, ogDefaults } from "@/lib/site-config";
 
-const title = "About Us | Aviation Construction Experts in Pakistan";
+const title = "About Us | Airport & Airstrip Construction Experts";
 const description =
-  "30+ years of experience delivering airport terminals, runways, hangars, and navigation systems across Pakistan. Learn about NR & Associates' expertise in aviation and civil infrastructure.";
+  "30+ years delivering airport terminals, runways, airstrips, hangars and navigation systems across Pakistan. Learn about NR & Associates' aviation and civil engineering expertise.";
 
 export const metadata: Metadata = {
   title,
   description,
+  keywords: [
+    ...keywordSets.core,
+    ...keywordSets.airstrip,
+    ...keywordSets.local,
+    ...keywordSets.compliance,
+  ],
   alternates: {
     canonical: "/about",
   },
   openGraph: {
+    ...ogDefaults,
     url: `${siteConfig.url}/about`,
     title,
     description,

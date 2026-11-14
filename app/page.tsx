@@ -4,17 +4,21 @@ import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ClientsSection from "@/components/sections/ClientsSection";
 import ContactSection from "@/components/sections/ContactSection";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, allKeywords, ogDefaults } from "@/lib/site-config";
+
+const title = `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`;
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Aviation & Civil Engineering Construction`,
+  title,
   description: siteConfig.description,
+  keywords: allKeywords,
   alternates: {
     canonical: "/",
   },
   openGraph: {
+    ...ogDefaults,
     url: siteConfig.url,
-    title: `${siteConfig.name} | Aviation & Civil Engineering Construction`,
+    title,
     description: siteConfig.description,
   },
 };

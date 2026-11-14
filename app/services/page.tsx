@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
 import ServicesSection from "@/components/sections/ServicesSection";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, keywordSets, ogDefaults } from "@/lib/site-config";
 
-const title = "Airport Construction & Civil Engineering Services";
+const title = "Runway, Taxiway & Airstrip Construction Services";
 const description =
-  "Runway and taxiway construction, terminal buildings, navigation and communication systems, civil engineering, and airport maintenance services from NR & Associates.";
+  "Runway, taxiway and airstrip construction, airport lighting, navigation and communication systems, civil engineering and airport maintenance services from NR & Associates.";
 
 export const metadata: Metadata = {
   title,
   description,
+  keywords: [
+    ...keywordSets.services,
+    ...keywordSets.airstrip,
+    ...keywordSets.core,
+    ...keywordSets.compliance,
+  ],
   alternates: {
     canonical: "/services",
   },
   openGraph: {
+    ...ogDefaults,
     url: `${siteConfig.url}/services`,
     title,
     description,

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ClientsSection from "@/components/sections/ClientsSection";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, keywordSets, ogDefaults } from "@/lib/site-config";
 
 const title = "Our Clients | Trusted Aviation & Mining Partners";
 const description =
@@ -9,10 +9,16 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
+  keywords: [
+    ...keywordSets.mining,
+    ...keywordSets.core,
+    ...keywordSets.local,
+  ],
   alternates: {
     canonical: "/clients",
   },
   openGraph: {
+    ...ogDefaults,
     url: `${siteConfig.url}/clients`,
     title,
     description,

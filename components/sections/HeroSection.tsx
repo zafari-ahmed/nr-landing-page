@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 const slides = [
   {
     image: "/assets/hero-airport-construction.jpg",
+    alt: "Airport construction site with runway and taxiway under development in Pakistan",
     title: "Building the Future of Aviation",
     subtitle:
       "Expert airport construction and runway development with precision and excellence",
@@ -17,6 +18,7 @@ const slides = [
   },
   {
     image: "/assets/hero-civil-engineering.jpg",
+    alt: "Civil engineering and airstrip earthworks on a NR & Associates construction project",
     title: "Leaders in Civil Engineering",
     subtitle:
       "Delivering world-class infrastructure solutions for modern construction challenges",
@@ -57,7 +59,7 @@ const HeroSection = () => {
           >
             <Image
               src={slide.image}
-              alt={slide.title}
+              alt={slide.alt}
               fill
               priority={index === 0}
               sizes="100vw"

@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
 import ContactSection from "@/components/sections/ContactSection";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, keywordSets, ogDefaults } from "@/lib/site-config";
 
-const title = "Contact Us | Get a Construction Consultation";
+const title = "Contact Us | Airport & Airstrip Construction Quotes";
 const description =
-  "Contact NR & Associates for airport construction, runway development, and civil engineering inquiries. Call +92-300-2252080 or send us a message.";
+  "Contact NR & Associates in Karachi for airport, runway and private airstrip construction enquiries. Call +92-300-2252080 or send us a message.";
 
 export const metadata: Metadata = {
   title,
   description,
+  keywords: [
+    ...keywordSets.local,
+    ...keywordSets.airstrip,
+    ...keywordSets.core,
+  ],
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
+    ...ogDefaults,
     url: `${siteConfig.url}/contact`,
     title,
     description,

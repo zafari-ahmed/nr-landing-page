@@ -28,7 +28,7 @@ const Footer = () => {
             <div>
               <Image
                 src="/assets/nr-logo-small.png"
-                alt="NR & Associates logo"
+                alt="NR & Associates — airport, runway and airstrip construction company in Karachi"
                 width={200}
                 height={80}
                 className="footerLogo"

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Providers } from "./providers";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, allKeywords, keywordSets } from "@/lib/site-config";
 import "./globals.css";
 
 // Loaded via a classic <link> tag below (see <head>) instead of next/font/google.
@@ -18,26 +18,39 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Aviation & Civil Engineering Construction`,
+    default: `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`,
     template: `%s | ${siteConfig.name}`,
   },
   alternates: {
     canonical: '/',
   },
   description: siteConfig.description,
+  keywords: allKeywords,
   authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "Construction",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_PK",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Aviation & Civil Engineering Construction`,
+    title: `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/assets/hero-airport-construction.jpg",
+        width: 1920,
+        height: 1080,
+        alt: `${siteConfig.name} — airport, runway and airstrip construction in Pakistan`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Aviation & Civil Engineering Construction`,
+    title: `Airport & Airstrip Construction in Karachi | ${siteConfig.name}`,
     description: siteConfig.description,
+    images: ["/assets/hero-airport-construction.jpg"],
   },
   robots: {
     index: true,
@@ -66,6 +79,33 @@ export default function RootLayout({
       addressCountry: "PK",
     },
     sameAs: [siteConfig.social.linkedin],
+    logo: `${siteConfig.url}/assets/nr-logo-small.png`,
+    image: `${siteConfig.url}/assets/hero-airport-construction.jpg`,
+    areaServed: [
+      { "@type": "City", name: "Karachi" },
+      { "@type": "AdministrativeArea", name: "Sindh" },
+      { "@type": "AdministrativeArea", name: "Balochistan" },
+      { "@type": "Country", name: "Pakistan" },
+    ],
+    knowsAbout: [...keywordSets.core, ...keywordSets.airstrip, ...keywordSets.compliance],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Aviation & Civil Engineering Services",
+      itemListElement: [
+        "Airport Construction",
+        "Runway & Airstrip Construction",
+        "Private Airstrip Construction",
+        "Taxiway & Apron Development",
+        "Runway & Airstrip Lighting Systems",
+        "Navigation & Communication Systems",
+        "Civil Engineering Solutions",
+        "Infrastructure Planning & Training",
+        "Maintenance & Support Services",
+      ].map((name) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name, provider: { "@type": "Organization", name: siteConfig.name } },
+      })),
+    },
   };
 
   return (

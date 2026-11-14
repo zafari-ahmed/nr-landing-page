@@ -89,7 +89,7 @@ const ClientsSection = ({ headingLevel = "h2" }: ClientsSectionProps) => {
                   <div className="w-h-15 mx-auto mb-4 bg-muted flex items-center justify-center transition-colors duration-300 overflow-hidden relative">
                     <Image
                       src={`/assets/${client.logo}`}
-                      alt={`${client.name} logo`}
+                      alt={`${client.name} — airport and airstrip construction client of NR & Associates`}
                       fill
                       className="object-contain p-2"
                     />
