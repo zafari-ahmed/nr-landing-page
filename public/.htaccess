@@ -1,0 +1,82 @@
+# Apache config for the NR & Associates static export on cPanel.
+#
+# This file lives in public/, so `next build` copies it into out/ and it ships
+# with the site. Upload the contents of out/ to public_html and this applies
+# automatically.
+#
+# Canonical host: https://nr-associates.com (no www). It must match
+# siteConfig.url in lib/site-config.ts — that value is baked into every
+# canonical tag, og:url and sitemap entry at build time, so if you ever move
+# to www you have to change BOTH this file and that one, then rebuild.
+
+# ---------------------------------------------------------------------------
+# One host, one protocol
+# ---------------------------------------------------------------------------
+# Without this, cPanel answers on http, https, www and non-www with identical
+# content — four URLs for every page, which Search Console reports as
+# "Duplicate without user-selected canonical".
+
+RewriteEngine On
+
+# http://… or https://www.… -> https://nr-associates.com/…
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.nr-associates\.com$ [NC]
+RewriteRule ^(.*)$ https://nr-associates.com/$1 [R=301,L]
+
+# Note: /about -> /about/ is handled by Apache's mod_dir already, which
+# matches the trailingSlash: true canonicals. No rule needed.
+
+# ---------------------------------------------------------------------------
+# Error pages
+# ---------------------------------------------------------------------------
+# Serve Next's exported 404 page instead of Apache's default.
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------------------
+# Don't list directory contents
+# ---------------------------------------------------------------------------
+# Stops /assets/ from returning a browsable index of every image.
+Options -Indexes
+
+# ---------------------------------------------------------------------------
+# Compression
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Caching
+# ---------------------------------------------------------------------------
+# Everything under /_next/static/ has a content hash in its filename, so it can
+# be cached forever — a new build produces new filenames. HTML must NOT be
+# cached that way, or visitors keep seeing the previous deploy.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Immutable, content-hashed build output.
+  <FilesMatch "\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Always revalidate HTML, XML and the robots file so deploys take effect.
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # Don't leak the full referrer to third parties.
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
